@@ -13,7 +13,7 @@ function Consult({ url }) {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:3002/api/consultar', {
-                Nombre1: username,
+                Documento: username,
             });
 
             setData(response.data);
@@ -22,7 +22,7 @@ function Consult({ url }) {
         }
     };
 
-    const inputFields = [{ label: 'Nombre', name: 'Nombre', type: 'text', value: username, pattern: "[A-Za-z]+" },];
+    const inputFields = [{ label: 'Documento', name: 'Documento', type: 'number', value: username},];
     return (
         <>
             <Header />

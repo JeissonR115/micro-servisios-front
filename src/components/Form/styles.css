@@ -1,10 +1,9 @@
 .form {
     width: 300px; /* Ancho del formulario */
-    margin:0 auto; /* Centra el formulario horizontalmente */
+    margin:30px  auto; /* Centra el formulario horizontalmente */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 80%;
   }
   
   .form input[type="text"],
