@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Form from '../../components/Form';
-const Insert = ({url}) => {
+import Header from '../../components/Header';
+const Insert = ({ url }) => {
     const [userData, setUserData] = useState({
         Documento: '',
         Nombre1: '',
@@ -61,14 +62,17 @@ const Insert = ({url}) => {
         { label: 'Teléfono', name: 'Telefono', type: 'text', value: userData.Telefono, pattern: "[0-9]{10}" }
     ];
 
-    return (
+    return (<>
+        <Header />
         <Form
             inputFields={inputFields}
             onSubmit={handleSubmit}
             errors={errors}
             onChange={handleChange}
         />
+    </>
     );
+
 }
 
 export default Insert;

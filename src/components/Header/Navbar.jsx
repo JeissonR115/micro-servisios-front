@@ -5,10 +5,10 @@ class Navbar extends React.Component {
     return (
       <nav className="navbar">
         <ul className="navbar__list">
-          <li><a href="/Insertar" className="navbar__link">Inicio</a></li>
-          <li><a href="/Consultar" className="navbar__link">Acerca de</a></li>
-          <li><a href="/Eliminar" className="navbar__link">Servicios</a></li>
-          <li><a href="/Actualizar" className="navbar__link">Contacto</a></li>
+          <li><a href="/Insertar" className="navbar__link">Insertar</a></li>
+          <li><a href="/Consultar" className="navbar__link">Consultar</a></li>
+          <li><a href="/Eliminar" className="navbar__link">Eliminar</a></li>
+          <li><a href="/Actualizar" className="navbar__link">Actualizar</a></li>
         </ul>
       </nav>
     );

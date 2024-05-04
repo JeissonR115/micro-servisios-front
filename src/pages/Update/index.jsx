@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Form from '../../components/Form';
+import Header from '../../components/Header';
 
 const Update = ({ url }) => {
     const [userData, setUserData] = useState({
@@ -62,13 +63,15 @@ const Update = ({ url }) => {
         { label: 'Teléfono', name: 'Telefono', type: 'number', value: userData.Telefono, pattern: "[0-9]{10}" }
     ];
 
-    return (
+    return (<>
+        <Header />
         <Form
             inputFields={inputFields}
             onSubmit={handleSubmit}
             errors={errors}
             onChange={handleChange}
         />
+    </>
     );
 }
 

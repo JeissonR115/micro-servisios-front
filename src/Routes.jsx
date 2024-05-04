@@ -12,8 +12,8 @@ const AppRoutes = () => {
             <Routes>
                 <Route path="/*" element={<App />} />
                 <Route path="/Insertar" element={<Insert url='http://localhost:3001/api/insertar' />} />
-                <Route path="/Consultar" element={<Consult url='http://localhost:3002/api/consultar'/>} />
-                <Route path="/Eliminar" element={<Eliminate url='http://localhost:3003/api/eliminar'/>} />
+                <Route path="/Consultar" element={<Consult url='http://localhost:3002/api/consultar' />} />
+                <Route path="/Eliminar" element={<Eliminate url='http://localhost:3003/api/eliminar' />} />
                 <Route path="/Actualizar" element={<Update url='http://localhost:3004/api/actualizar' />} />
             </Routes>
         </BrowserRouter>

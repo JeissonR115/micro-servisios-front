@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Form from '../../components/Form';
-function Consult({url}) {
+import Header from '../../components/Header';
+function Consult({ url }) {
     const [data, setData] = useState('');
     const [username, setUsername] = useState('');
 
@@ -24,14 +25,15 @@ function Consult({url}) {
     const inputFields = [{ label: 'Nombre', name: 'Nombre', type: 'text', value: username, pattern: "[A-Za-z]+" },];
     return (
         <>
+            <Header />
             <Form
                 inputFields={inputFields}
                 onSubmit={handleConsult}
                 errors={{}}
                 onChange={handleChange}
-                
+
             />
-             <div className='response response__consult'>
+            <div className='response response__consult'>
                 {data != '' ? (
                     <div className="user-data">
                         <p><span>Documento: </span>{data.Documento}</p>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Form from '../../components/Form';
+import Header from '../../components/Header';
 
 
 function Eliminate({ url }) {
@@ -20,7 +21,7 @@ function Eliminate({ url }) {
             });
             setData(response.data);
             alert("usuario eliminado correctamente")
-            
+
         } catch (error) {
             setErrorMessage('Error al borrar los datos');
             console.error('Error en la solicitud de inicio de sesión:', error);
@@ -31,6 +32,7 @@ function Eliminate({ url }) {
 
     return (
         <>
+            < Header />
             <Form
                 inputFields={inputFields}
                 onSubmit={handleConsult}
