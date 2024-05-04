@@ -31,7 +31,7 @@ function Consult({ url }) {
                 onSubmit={handleConsult}
                 errors={{}}
                 onChange={handleChange}
-
+                nameButton={'consultar'}
             />
             <div className='response response__consult'>
                 {data != '' ? (

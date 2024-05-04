@@ -69,6 +69,7 @@ const Insert = ({ url }) => {
             onSubmit={handleSubmit}
             errors={errors}
             onChange={handleChange}
+            nameButton={"Insertar"}
         />
     </>
     );

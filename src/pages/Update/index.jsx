@@ -70,6 +70,7 @@ const Update = ({ url }) => {
             onSubmit={handleSubmit}
             errors={errors}
             onChange={handleChange}
+            nameButton={"Actualizar"}
         />
     </>
     );

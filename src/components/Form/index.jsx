@@ -1,7 +1,7 @@
 import React from 'react';
 import Field from './Field';
 import "./styles.css"
-const Form = ({ inputFields, onSubmit, errors, onChange }) => (
+const Form = ({ inputFields, onSubmit, errors, onChange,nameButton }) => (
     <form className="form" onSubmit={onSubmit}>
         {inputFields.map(field => (
             <Field
@@ -14,7 +14,7 @@ const Form = ({ inputFields, onSubmit, errors, onChange }) => (
                 error={errors[field.name]}
             />
         ))}
-        <button className="form-button" type="submit">Registrar</button>
+        <button className="form-button" type="submit">{nameButton}</button>
     </form>
 );
 
