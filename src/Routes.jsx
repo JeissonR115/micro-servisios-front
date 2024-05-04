@@ -4,14 +4,13 @@ import App from './App';
 import Header from './components/Header';
 import Consult from './pages/Consult';
 import Insert from './pages/Insert';
-// import Login from './login/';
 
 const AppRoutes = () => {
     return (
         <BrowserRouter >
             <Routes>
                 <Route path="/*" element={<App />} />
-                <Route path="/Insertar" element={<Insert />} />
+                <Route path="/Insertar" element={<Insert url='http://localhost:3001/api/insertar' />} />
                 <Route path="/Consultar" element={<Consult />} />
                 <Route path="/Eliminar" element={<App />} />
                 <Route path="/Actualizar" element={<App />} />
