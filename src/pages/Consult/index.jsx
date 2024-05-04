@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
-function Consult() {
+import Form from '../../components/Form';
+function Consult({url}) {
     const [data, setData] = useState('');
     const [username, setUsername] = useState('');
 
-    const handleUsernameChange = (e) => {
+    const handleChange = (e) => {
         setUsername(e.target.value);
     };
-
-    const handleConsult = async () => {
+    const handleConsult = async (e) => {
+        e.preventDefault();
         try {
             const response = await axios.post('http://localhost:3002/api/consultar', {
                 Nombre1: username,
@@ -21,14 +21,17 @@ function Consult() {
         }
     };
 
+    const inputFields = [{ label: 'Nombre', name: 'Nombre', type: 'text', value: username, pattern: "[A-Za-z]+" },];
     return (
         <>
-            <form className="form">
-                <label htmlFor="inputUserName"></label>
-                <input id='inputUserName' type="text" value={username} placeholder="Username" onChange={handleUsernameChange} />
-                <button className="form-button" type="button" onClick={handleConsult}>Consultar</button>
-            </form>
-            <div className='response response__consult'>
+            <Form
+                inputFields={inputFields}
+                onSubmit={handleConsult}
+                errors={{}}
+                onChange={handleChange}
+                
+            />
+             <div className='response response__consult'>
                 {data != '' ? (
                     <div className="user-data">
                         <p><span>Documento: </span>{data.Documento}</p>
