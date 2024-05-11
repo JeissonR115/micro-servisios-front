@@ -24,7 +24,7 @@ const Insert = ({ url }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const requiredFields = ['Documento', 'Nombre1', 'Apellido1', 'Correo', 'Telefono'];
+        const requiredFields = ['Documento', 'Nombre1','Nombre2', 'Apellido1','Apellido2', 'Correo', 'Telefono'];
         const formErrors = requiredFields.reduce((acc, field) => {
             if (!userData[field]) acc[field] = `Por favor, complete el campo ${field}.`;
             return acc;

@@ -12,11 +12,11 @@ function Consult({ url }) {
     const handleConsult = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3002/api/consultar', {
+            const response = await axios.post(url, {
                 Documento: username,
             });
-
-            setData(response.data);
+            
+            setData(response.data.user);
         } catch (error) {
             console.error('Error en la solicitud de inicio de sesión:', error);
         }
@@ -34,7 +34,7 @@ function Consult({ url }) {
                 nameButton={'consultar'}
             />
             <div className='response response__consult'>
-                {data != '' ? (
+                {data != '' && data != undefined ? (
                     <div className="user-data">
                         <p><span>Documento: </span>{data.Documento}</p>
                         <p><span>Nombre: </span>{data.Nombre1}</p>

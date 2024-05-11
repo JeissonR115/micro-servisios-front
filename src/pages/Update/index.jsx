@@ -25,7 +25,7 @@ const Update = ({ url }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const requiredFields = ['Documento', 'Nombre1', 'Apellido1', 'Correo', 'Telefono'];
+        const requiredFields = ['Documento', 'Nombre1','Nombre2', 'Apellido1','Apellido2', 'Correo', 'Telefono'];
         const formErrors = requiredFields.reduce((acc, field) => {
             if (!userData[field]) acc[field] = `Por favor, complete el campo ${field}.`;
             return acc;
@@ -45,7 +45,9 @@ const Update = ({ url }) => {
 
         if (Object.keys(formErrors).length === 0) {
             try {
+                console.log(url,userData)
                 await axios.put(url, userData);
+                
                 alert('Datos enviados correctamente')
             } catch (error) {
                 console.error(`Error al usar ${url}`, error);
