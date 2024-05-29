@@ -16,14 +16,15 @@ function Eliminate({ url }) {
     const handleConsult = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${url}`,{'Documento':userDoc}); // Envía el ID del usuario como parte de la URL
-            setData(response);
+            const response = await axios.delete(`${url}`, { data: { id: userDoc } });
+            setData(response.data);
             alert(`Usuario identificado con: ${userDoc} fue eliminado correctamente`);
         } catch (error) {
             setErrorMessage('Error al borrar los datos');
-            console.error('Error en la solicitud :', error);
+            console.error('Error en la solicitud')
         }
     };
+    
 
     const inputFields = [{ label: 'Documento', name: 'Documento', type: 'number', value: userDoc }];
 
