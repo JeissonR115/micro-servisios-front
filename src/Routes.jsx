@@ -10,10 +10,10 @@ const AppRoutes = () => {
         <BrowserRouter >
             <Routes>
                 <Route path="/*" element={<App />} />
-                <Route path="/Insertar" element={<Insert url='https://wvl2d35h-3000.use2.devtunnels.ms/insert' />} />
-                <Route path="/Consultar" element={<Consult url='https://wvl2d35h-3020.use2.devtunnels.ms/query' />} />
-                <Route path="/Eliminar" element={<Eliminate url='http://localhost:3030/users/delete' />} />
-                <Route path="/Actualizar" element={<Update url='http://localhost:3030/user/update' />} />
+                <Route path="/Insertar" element={<Insert url='http://localhost:3000/users/insert/' />} />
+                <Route path="/Consultar" element={<Consult url='http://localhost:3010/users/get/' />} />
+                <Route path="/Eliminar" element={<Eliminate url='http://localhost:3010/users/delete/' />} />
+                <Route path="/Actualizar" element={<Update url='http://localhost:3030/user/update/' />} />
             </Routes>
         </BrowserRouter>
     );

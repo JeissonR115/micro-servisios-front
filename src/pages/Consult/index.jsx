@@ -12,11 +12,8 @@ function Consult({ url }) {
     const handleConsult = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(url, {
-                Documento: username,
-            });
-            
-            setData(response.data.user);
+            const response = await axios.get(`${url}${username}`);
+            setData(response.data.data);
         } catch (error) {
             console.error('Error en la solicitud de inicio de sesión:', error);
         }
@@ -36,13 +33,9 @@ function Consult({ url }) {
             <div className='response response__consult'>
                 {data != '' && data != undefined ? (
                     <div className="user-data">
-                        <p><span>Documento: </span>{data.Documento}</p>
-                        <p><span>Nombre: </span>{data.Nombre1}</p>
-                        <p><span>Segundo Nombre: </span>{data.Nombre2}</p>
-                        <p><span>Apellido: </span>{data.Apellido1}</p>
-                        <p><span>Segundo Apellido: </span>{data.Apellido2}</p>
-                        <p><span>Correo: </span>{data.Correo}</p>
-                        <p><span>Teléfono: </span>{data.Telefono}</p>
+                        <p><span>Documento: </span>{data.ID}</p>
+                        <p><span>Nombre: </span>{data.Name}</p>
+                        <p><span>Edad: </span>{data.Age}</p>
                     </div>
                 ) : <p>No se encontraron datos </p>}
             </div>

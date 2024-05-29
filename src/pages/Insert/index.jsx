@@ -2,15 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Form from '../../components/Form';
 import Header from '../../components/Header';
+
 const Insert = ({ url }) => {
     const [userData, setUserData] = useState({
-        Documento: '',
-        Nombre1: '',
-        Nombre2: '',
-        Apellido1: '',
-        Apellido2: '',
-        Correo: '',
-        Telefono: ''
+        name: '',
+        age: '',
     });
 
     const [errors, setErrors] = useState({});
@@ -24,56 +20,43 @@ const Insert = ({ url }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const requiredFields = ['Documento', 'Nombre1','Nombre2', 'Apellido1','Apellido2', 'Correo', 'Telefono'];
+        const requiredFields = ['name', 'age'];
         const formErrors = requiredFields.reduce((acc, field) => {
             if (!userData[field]) acc[field] = `Por favor, complete el campo ${field}.`;
             return acc;
         }, {});
-
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (userData.Correo && !emailPattern.test(userData.Correo)) {
-            formErrors.Correo = 'Por favor, ingrese un correo electrónico válido.';
-        }
-
-        const phonePattern = /^\d{10}$/;
-        if (userData.Telefono && !phonePattern.test(userData.Telefono)) {
-            formErrors.Telefono = 'Por favor, ingrese un número de teléfono válido (10 dígitos).';
-        }
 
         setErrors(formErrors);
 
         if (Object.keys(formErrors).length === 0) {
             try {
                 await axios.post(url, userData);
-                alert('Datos enviados correctamente')
+                alert('Datos enviados correctamente');
+                setUserData({ name: '', age: '' }); // Limpiar los campos después de enviar los datos
             } catch (error) {
                 console.error(`Error al usar ${url}`, error);
+                alert('Error al enviar los datos');
             }
         }
     };
 
     const inputFields = [
-        { label: 'Documento', name: 'Documento', type: 'number', value: userData.Documento, pattern: "[0-9]{3,}" },
-        { label: 'Nombre 1', name: 'Nombre1', type: 'text', value: userData.Nombre1, pattern: "[A-Za-z]+" },
-        { label: 'Nombre 2', name: 'Nombre2', type: 'text', value: userData.Nombre2, pattern: "[A-Za-z]*" },
-        { label: 'Apellido 1', name: 'Apellido1', type: 'text', value: userData.Apellido1, pattern: "[A-Za-z]+" },
-        { label: 'Apellido 2', name: 'Apellido2', type: 'text', value: userData.Apellido2, pattern: "[A-Za-z]*" },
-        { label: 'Correo', name: 'Correo', type: 'email', value: userData.Correo },
-        { label: 'Teléfono', name: 'Telefono', type: 'text', value: userData.Telefono, pattern: "[0-9]{10}" }
+        { label: 'Name', name: 'name', type: 'text', value: userData.name, pattern: "" },
+        { label: 'Age', name: 'age', type: 'number', value: userData.age, pattern: "" },
     ];
 
-    return (<>
-        <Header />
-        <Form
-            inputFields={inputFields}
-            onSubmit={handleSubmit}
-            errors={errors}
-            onChange={handleChange}
-            nameButton={"Insertar"}
-        />
-    </>
+    return (
+        <>
+            <Header />
+            <Form
+                inputFields={inputFields}
+                onSubmit={handleSubmit}
+                errors={errors}
+                onChange={handleChange}
+                nameButton={"Insertar"}
+            />
+        </>
     );
-
 }
 
 export default Insert;
